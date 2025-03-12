@@ -15,8 +15,8 @@ This package provides two specialized edge detection nodes:
 1. **Install the package**:
    ```bash
    cd ComfyUI/custom_nodes/
-   git clone https://github.com/vkriez/vkriez_edge_preprocessors.git
-   cd vkriez_edge_preprocessors
+   git clone https://github.com/vadimcro/VKRiez-Edge.git
+   cd VKRiez-Edge
    pip install -r requirements.txt
    ```
 
