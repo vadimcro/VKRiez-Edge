@@ -50,6 +50,13 @@ Additionally you can stick a Preview Bridge node between these two in order to s
 - Intelligent blending of both techniques
 - Automatic model download from HuggingFace
 
+## Examples
+
+![image](https://github.com/user-attachments/assets/a248ed24-6465-42e4-9e89-03f01f387ebf)
+
+![image](https://github.com/user-attachments/assets/f91da531-1969-4305-be01-0031aa8c1483)
+
+
 ## Parameter Guide
 
 # VKriez Edge Preprocessors - Detailed Parameter Guide
