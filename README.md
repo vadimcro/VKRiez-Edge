@@ -1,6 +1,7 @@
 # VKriez Edge Preprocessors for ComfyUI
 
 A collection of advanced edge detection nodes for ComfyUI that generate high-quality edge maps for ControlNet guidance.
+Currently based on CPU computation, so might be a tid-bit on a slow side. If anyone is willing to refactor the code to GPU computation - Kudos!
 
 ## Overview
 
