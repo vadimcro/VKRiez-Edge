@@ -17,8 +17,6 @@ This package provides two specialized edge detection nodes:
    ```bash
    cd ComfyUI/custom_nodes/
    git clone https://github.com/vadimcro/VKRiez-Edge.git
-   cd VKRiez-Edge
-   pip install -r requirements.txt
    ```
 
 2. **For Hybrid MTEED mode** (optional, but recommended):
