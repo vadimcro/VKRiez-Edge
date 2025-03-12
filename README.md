@@ -56,6 +56,8 @@ Additionally you can stick a Preview Bridge node between these two in order to s
 
 ![image](https://github.com/user-attachments/assets/f91da531-1969-4305-be01-0031aa8c1483)
 
+![image](https://github.com/user-attachments/assets/5c481339-d3f0-496e-9d91-c9df5c663453)
+
 
 ## Parameter Guide
 
