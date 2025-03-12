@@ -27,6 +27,12 @@ This package provides two specialized edge detection nodes:
 
 3. Restart ComfyUI
 
+## Usage
+
+Connect one of the nodes between Load Image node that contains your reference or guidance image and Apply ControlNet node.
+The nodes serve as preprocessors for Canny / MistoLine ControlNet Models for contour extraction and guidance.
+Additionally you can stick a Preview Bridge node between these two in order to see the results of line extraction.
+
 ## Features
 
 ### VKriez Enhanced Edge Preprocessor
