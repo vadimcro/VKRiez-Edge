@@ -1,7 +1,7 @@
 [project]
 name = "vkriez-edge"
 description = "A collection of advanced edge detection nodes for ComfyUI that generate high-quality edge maps / contours for usage with ControlNet Canny / Anyline guidance."
-version = "1.0.0"
+version = "1.0.1"
 license = {file = "LICENSE"}
 
 [project.urls]
