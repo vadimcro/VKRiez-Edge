@@ -1,15 +1,23 @@
 # VKriez Edge Preprocessors for ComfyUI
 
-A collection of advanced edge detection nodes for ComfyUI that generate high-quality edge maps for ControlNet guidance.
-Currently based on CPU computation, so might be a tid-bit on a slow side. If anyone is willing to refactor the code to GPU computation - Kudos!
+A collection of **advanced edge detection nodes** for ComfyUI that generate high-quality edge maps for ControlNet guidance. 
+These nodes now **support optional GPU-accelerated bilateral filtering** to speed up the preprocessing pipeline if CUDA is available.
 
 ## Overview
 
 This package provides two specialized edge detection nodes:
 
-1. **VKriez Enhanced Edge Preprocessor** - A powerful edge detection solution that produces clean, continuous lines with minimal noise.
+1. **VKriez Enhanced Edge Preprocessor**  
+   A powerful edge detection solution that produces clean, continuous lines with minimal noise. Features:
+   - Optional GPU-based bilateral filter
+   - Local bounding-box approach to edge linking (faster than naive global methods)
+   - Detailed parameter controls for precise tuning
 
-2. **VKriez Hybrid MTEED Edge Preprocessor** - Combines MTEED (Multi-Task Transformer Edge and Embedding Detector) with the Enhanced Edge Preprocessor for superior edge detection that understands image content.
+2. **VKriez Hybrid MTEED Edge Preprocessor**  
+   Combines MTEED (Multi-Task Transformer Edge and Embedding Detector) with the Enhanced Edge Preprocessor for superior, semantically aware edge detection. Features:
+   - MTEED neural network for content understanding
+   - Optional GPU-based bilateral filter and local bounding-box edge linking
+   - Intelligent blending of AI-based edges + classical edges
 
 ## Installation
 
@@ -28,18 +36,21 @@ This package provides two specialized edge detection nodes:
 
 ## Usage
 
-Connect one of the nodes between Load Image node that contains your reference or guidance image and Apply ControlNet node.
-The nodes serve as preprocessors for Canny / MistoLine ControlNet Models for contour extraction and guidance.
-Additionally you can stick a Preview Bridge node between these two in order to see the results of line extraction.
+1. Load your reference/guidance image (using a Load Image node).
+2. Insert the VKriez Edge node (Enhanced or Hybrid MTEED) between your image and the ControlNet node.
+3. Optionally insert a Preview node to visualize the extracted edges.
+4. Configure parameters (e.g., bilateral filter diameter, Canny thresholds, edge linking gap) in the node’s UI to suit your image and goals.
+5. Use GPU Acceleration if desired, by enabling the Use GPU Acceleration toggle (requires a working CUDA environment)
 
 ## Features
 
 ### VKriez Enhanced Edge Preprocessor
 
-- Advanced edge detection with clean, continuous lines
-- Sophisticated edge linking to connect broken edges
-- Noise reduction and small component filtering
-- Highly customizable parameters for fine-tuning results
+- GPU-Accelerated Bilateral Filtering (optional) for faster noise reduction
+- Local Bounding-Box Edge Linking to connect broken edges efficiently
+- Sophisticated small-component filtering for cleaner line maps
+- Edge consistency enhancement (skeletonization/thinning) for uniform lines
+- Adaptive region processing for foreground/background segmentation based on saliency
 
 ### VKriez Hybrid MTEED Edge Preprocessor
 
@@ -65,6 +76,10 @@ Additionally you can stick a Preview Bridge node between these two in order to s
 This guide provides in-depth explanations of each parameter in the Edge Preprocessors:
 
 ## Detailed Parameter Breakdown
+
+**Use GPU Acceleration**:
+Toggles GPU-based computation (mainly for bilateral filtering). Falls back to CPU if no CUDA is available.
+Typical use: Enable for speed gains on mid-to-high end GPUs. Disable if you have no CUDA-capable hardware or run into compatibility issues.
 
 ### Bilateral Filter Parameters
 
@@ -178,6 +193,17 @@ This guide provides in-depth explanations of each parameter in the Edge Preproce
 - *Value 100-500 (Large)*: Aggressive filtering, keeps only major edge structures
 - *Example*: For a noisy scan with speckling, use higher values (50-100) to eliminate the noise
 - *Example*: For detailed line art with fine elements, use lower values (10-20) to preserve small details
+
+### Adaptive Regions & Enhanced Filtering
+
+**Use Adaptive Regions, Use Enhanced Filtering**:
+Segregate foreground (salient) vs. background edges, allowing different thresholds for each.
+
+## Edge Consistency
+
+**Use Edge Consistency, Target Edge Thickness**:
+Skeletonizes edges for uniform line thickness, then optionally dilates them in order to maintain consistent lines
+
 
 ### VKriez Hybrid MTEED Edge Preprocessor Specific Parameters
 
