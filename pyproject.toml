@@ -1,6 +1,6 @@
 [project]
 name = "vkriez-edge"
-description = "A collection of advanced edge detection nodes for ComfyUI that generate high-quality edge maps for ControlNet guidance. Currently based on CPU computation, so might be a tid-bit on a slow side. If anyone is willing to refactor the code to GPU computation - Kudos!"
+description = "A collection of advanced edge detection nodes for ComfyUI that generate high-quality edge maps / contours for usage with ControlNet Canny / Anyline guidance."
 version = "1.0.0"
 license = {file = "LICENSE"}
 
@@ -9,6 +9,6 @@ Repository = "https://github.com/vadimcro/VKRiez-Edge"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "@vkriez"
 DisplayName = "VKRiez-Edge"
 Icon = ""
